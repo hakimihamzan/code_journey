@@ -1,0 +1,11 @@
+>>> data = "From stephen.scurry@uct.uz.az SAT 1934 13/03/2020"
+>>> apos = data.find('@')
+>>>
+>>> print(apos)
+19
+>>> spos = data.find(' ',apos)
+>>> print(spos)
+29
+>>> host = data[apos+1:spos]
+>>> print(host)
+uct.uz.az

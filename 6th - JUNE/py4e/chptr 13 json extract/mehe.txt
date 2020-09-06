@@ -1,0 +1,82 @@
+{
+    "status": "OK",
+    "results": [
+        {
+            "types": [
+                "locality",
+                "political"
+            ],
+            "address_components": [
+                {
+                    "long_name": "Kokshetau",
+                    "types": [
+                        "locality",
+                        "political"
+                    ],
+                    "short_name": "Kokshetau"
+                },
+                {
+                    "long_name": "Zerendi District",
+                    "types": [
+                        "administrative_area_level_2",
+                        "political"
+                    ],
+                    "short_name": "Zerendi District"
+                },
+                {
+                    "long_name": "Akmola Province",
+                    "types": [
+                        "administrative_area_level_1",
+                        "political"
+                    ],
+                    "short_name": "Akmola Province"
+                },
+                {
+                    "long_name": "Kazakhstan",
+                    "types": [
+                        "country",
+                        "political"
+                    ],
+                    "short_name": "KZ"
+                },
+                {
+                    "long_name": "020000",
+                    "types": [
+                        "postal_code"
+                    ],
+                    "short_name": "020000"
+                }
+            ],
+            "place_id": "ChIJVy5JP2CUTEIRE1RU19YiGYg",
+            "geometry": {
+                "bounds": {
+                    "southwest": {
+                        "lng": 69.3523467,
+                        "lat": 53.2518123
+                    },
+                    "northeast": {
+                        "lng": 69.4638061,
+                        "lat": 53.3444028
+                    }
+                },
+                "location": {
+                    "lng": 69.40444939999999,
+                    "lat": 53.2871307
+                },
+                "location_type": "APPROXIMATE",
+                "viewport": {
+                    "southwest": {
+                        "lng": 69.3523467,
+                        "lat": 53.2518123
+                    },
+                    "northeast": {
+                        "lng": 69.4638061,
+                        "lat": 53.3444028
+                    }
+                }
+            },
+            "formatted_address": "Kokshetau 020000, Kazakhstan",
+            "partial_match": true
+        }
+    ]
+}

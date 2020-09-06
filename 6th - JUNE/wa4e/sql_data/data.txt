@@ -1,0 +1,71 @@
+Illenium
+Ascend
+
+                  Dance Pop
+  "Good Things Fall Apart" (with Jon Bellion)
+  "Broken Ones" (with Anna Clendening)
+  "Sad Songs" (with Said the Sky featuring Annika Wells)
+  "In Your Arms" (with X Ambassadors)
+
+Awake
+                  Melodic Bass
+  "Fractures" (featuring Nevve)
+
+-----------------------------------------------
+
+OneRepublic
+Native
+                  Pop
+  "Preacher"
+  "Something I Need"
+  "I Lived"
+  What You Wanted
+  Can't Stop
+  Burning Bridges
+
+  INSERT INTO Track (track_title, album_id, genre_id)
+    VALUES ('Preacher', 3, 3);
+INSERT INTO Track (track_title, album_id, genre_id)
+    VALUES ('Something I Need', 3, 4);
+INSERT INTO Track (track_title, album_id, genre_id)
+    VALUES ('I Lived', 3, 4);
+INSERT INTO Track (track_title, album_id, genre_id)
+    VALUES ('What You Wanted', 3, 3);
+INSERT INTO Track (track_title, album_id, genre_id)
+    VALUES ("Can't Stop", 3, 3);
+INSERT INTO Track (track_title, album_id, genre_id)
+    VALUES ('Burning Bridges', 3, 4);
+
+
+Oh My My
+                  Pop Rock
+  "Future Looks Good"
+  "Let's Hurt Tonight"
+  "Wherever I Go"
+
+------------------------------------------------
+Bastille
+Doom Days
+                  Electropop
+
+  "Quarter Past Midnight"
+  Bad Decision
+  Divide
+  4AM
+  Another Place
+  Those Nights
+
+
+select track.track_title, artist.artist_name, album.album_title, genre.genre,
+from track join artist join album join genre
+on track.genre_id = genre.genre_id and track.album_id = album.album_id
+and album.artist_id = artist.artist_id
+
+select distinct artist.artist_name, genre.genre
+from track join artist join album join genre
+on track.genre_id = genre.genre_id and track.album_id = album.album_id
+and album.artist_id = artist.artist_id where artist.artist_name = "Illenium"
+
+
+select distinct artist.artist_name genre.genre from track join album join genre join artist_id
+on track
