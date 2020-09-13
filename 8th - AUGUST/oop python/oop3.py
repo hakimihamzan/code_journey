@@ -1,21 +1,21 @@
-##class Person:
-##    numberOfPeople = 0
-##
-##    def __init__(self, name):
-##        self.name = name
-##
-##p1 = Person("Tim")
-##print(p1.numberOfPeople)
-##Person.numberOfPeople = 2
-###print(p1.numberOfPeople)
-##print(Person.numberOfPeople)
-##
-##p2 = Person("Jill")
-##
-##Person.numberOfPeople = 8
-###print(p1.numberOfPeople)
-##print(p2.numberOfPeople)
-#---------------------------------
+class Person:
+   numberOfPeople = 0
+
+   def __init__(self, name):
+       self.name = name
+
+p1 = Person("Tim")
+print(p1.numberOfPeople)
+Person.numberOfPeople = 2
+print(p1.numberOfPeople)
+print(Person.numberOfPeople)
+
+p2 = Person("Jill")
+
+Person.numberOfPeople = 8
+print(p1.numberOfPeople)
+print(p2.numberOfPeople)
+---------------------------------
 
 ##class Person:
 ##    numberOfPeople = 0
@@ -50,9 +50,3 @@ class Person:
 p1 = Person("Tim")
 p2 = Person("Jill")
 print(Person.number_of_people_())
-
-
-
-
-
-
