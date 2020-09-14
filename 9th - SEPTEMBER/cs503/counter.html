@@ -9,12 +9,16 @@
 
       function count() {
         counter++;
-        alert(counter);
+        document.querySelector('h1').innerHTML = counter;
+
+        if (counter % 15 == 0){
+            alert(`Count is now ${counter}`)
+        }
         }
     </script>
   </head>
   <body>
-    <h1>Hello</h1>
+    <h1>0</h1>
     <button onclick="count()">Count</button>
   </body>
 </html>

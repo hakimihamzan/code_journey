@@ -5,7 +5,13 @@
     <title></title>
     <script>
         function hello() {
-          alert("Welcome to Hell!");
+          const heading = document.querySelector('h1');
+          if (heading.innerHTML === "Hello") {
+            heading.innerHTML = "Goodbye!";
+          } else {
+            heading.innerHTML = "Hello";
+          }
+
         }
     </script>
   </head>
