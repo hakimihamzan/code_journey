@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
 
     # Extensions - installed with pip3 / requirements.txt
-    'django_extensions',
+    'django_extensions', # Add
+    'unesco.apps.UnescoConfig',  # Add
     'crispy_forms',
     'rest_framework',
     'social_django',
