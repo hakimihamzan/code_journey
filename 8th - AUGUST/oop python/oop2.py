@@ -1,10 +1,10 @@
-##class Cat:
-##    def __init__(self,name,age):
-##        self.name = name
-##        self.age = age
-##
-##    def speak(self):
-##        print("Meow")
+class Cat:
+   def __init__(self,name,age):
+       self.name = name
+       self.age = age
+
+   def speak(self):
+       print("Meow")
 ##
 ##
 ##class Dog:
@@ -26,7 +26,7 @@
 ##
 ##    def speak(self):
 ##        print("zzzzzzzzzzzz")
-##    
+##
 ##class Cat(Pet):
 ##    def speak(self):
 ##        print("Meow")
@@ -64,7 +64,7 @@ class Pet: #parent class
 
     def speak(self):
         print("zzzzzzzzzzzz")
-    
+
 class Cat(Pet):
     def speak(self):
         print("Meow")
@@ -75,7 +75,7 @@ class Dog(Pet):
         super().__init__(name,age) # super stands for class that we inherited
         self.color = color
 
-        
+
     def speak(self):
         print("Bark")
 
@@ -98,6 +98,3 @@ d.show()
 
 f = Fish("Bub",10)
 f.speak()
-
-
-
