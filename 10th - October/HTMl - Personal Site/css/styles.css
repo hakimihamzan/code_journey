@@ -11,8 +11,38 @@ hr {
 
 h1 {
   color: #66BFBF;
+  font-size: 100px;
 }
 
 h3 {
   color: #66BFBF;
+}
+
+
+/************************TAG SELECTORS********************/
+
+
+img:hover {
+  background-color: black;
+}
+
+
+/************************CLASS SELECTORS********************/
+
+.bacon {
+  background-color: red;
+}
+
+.broccoli {
+  background-color: green;
+}
+
+.circular {
+  border-radius: 100%;
+}
+
+/************************ID SELECTORS********************/
+
+#heading {
+  color: blue;
 }
