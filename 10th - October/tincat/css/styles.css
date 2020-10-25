@@ -1,6 +1,6 @@
 #title {
   background-color: #ff4c68;
-  color:white;
+  color: white;
 }
 
 .container-fluid {
@@ -8,25 +8,33 @@
 }
 
 h1 {
-  font-family: 'Montserrat-Black';
-  font-size: 3rem;
+  font-family: 'Montserrat';
+  font-size: 3.5rem;
   line-height: 1.5;
-
 }
+
+h3 {
+  font-family: 'Montserrat';
+  font-size: 1.25rem;
+}
+
+p {
+  font-family: sans-serif;
+  color: #8f8f8f;
+  font-size: 14px;
+}
+
+
 
 body {
   font-family: 'Montserrat', sans-serif;
-
 }
 
-
 /* Navigation Bar */
-
 .navbar-brand {
   font-family: 'Ubuntu';
   font-size: 2.5rem;
   font-weight: bold;
-
 }
 
 .navbar {
@@ -49,4 +57,25 @@ body {
 /* Title Image */
 .title-img {
   width: 60%;
+  transform: rotate(25deg);
+}
+
+/* faeture section */
+
+#features {
+  padding: 7% 15%;
+}
+
+.feature-box {
+  text-align: center;
+  padding: 5%;
+}
+
+.i-color {
+  color: #ef8172;
+  margin-bottom: 1rem;
+}
+
+.i-color:hover {
+  color: #ff4c68;
 }
