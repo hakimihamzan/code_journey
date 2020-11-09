@@ -74,11 +74,20 @@ class _LocationScreenState extends State<LocationScreen> {
                     ),
                   ),
                   FlatButton(
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) {
-                        return CityScreen();
-                      }));
+                    onPressed: () async {
+                      var typedName = await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return CityScreen();
+                          },
+                        ),
+                      );
+                      if (typedName != null) {
+                        var weatherData =
+                            await weather.getCityWeather(typedName);
+                        updateUI(weatherData);
+                      }
                     },
                     child: Icon(
                       Icons.location_city,
@@ -86,6 +95,9 @@ class _LocationScreenState extends State<LocationScreen> {
                     ),
                   ),
                 ],
+              ),
+              SizedBox(
+                height: 50.0,
               ),
               Padding(
                 padding: EdgeInsets.only(left: 15.0),
@@ -102,12 +114,17 @@ class _LocationScreenState extends State<LocationScreen> {
                   ],
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(right: 15.0),
-                child: Text(
-                  "$weatherMessage in $cityName!",
-                  textAlign: TextAlign.right,
-                  style: kMessageTextStyle,
+              SizedBox(
+                height: 50.0,
+              ),
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.only(right: 15.0),
+                  child: Text(
+                    "$weatherMessage in $cityName!",
+                    textAlign: TextAlign.right,
+                    style: kMessageTextStyle,
+                  ),
                 ),
               ),
             ],
