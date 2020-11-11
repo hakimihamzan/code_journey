@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'coin_data.dart';
 import 'package:flutter/cupertino.dart';
+import 'coin_data.dart';
 import 'dart:io' show Platform;
 
 class PriceScreen extends StatefulWidget {
@@ -10,49 +10,58 @@ class PriceScreen extends StatefulWidget {
 
 class _PriceScreenState extends State<PriceScreen> {
   String selectedCurrency = 'USD';
+  CoinData coinData = CoinData();
+  String interpretationRate = '1 BTC = ? USD';
 
   DropdownButton<String> androidDropdown() {
-    List<DropdownMenuItem<String>> itemList = [];
-
+    List<DropdownMenuItem<String>> dropdownItems = [];
     for (String currency in currenciesList) {
       var newItem = DropdownMenuItem(
         child: Text(currency),
         value: currency,
       );
-      itemList.add(newItem);
+      dropdownItems.add(newItem);
     }
 
     return DropdownButton<String>(
       value: selectedCurrency,
-      items: itemList,
+      items: dropdownItems,
       onChanged: (value) {
         setState(() {
           selectedCurrency = value;
         });
-        print(value);
       },
     );
   }
 
-  CupertinoPicker getIOSPicker() {
-    List<Widget> itemPickerList = [];
-
+  CupertinoPicker iOSPicker() {
+    List<Text> pickerItems = [];
     for (String currency in currenciesList) {
-      var newItem = Text(
-        currency,
-        style: TextStyle(color: Colors.white),
-      );
-      itemPickerList.add(newItem);
+      pickerItems.add(Text(currency));
     }
 
     return CupertinoPicker(
       backgroundColor: Colors.lightBlue,
-      itemExtent: 30.0,
+      itemExtent: 32.0,
       onSelectedItemChanged: (selectedIndex) {
         print(selectedIndex);
       },
-      children: itemPickerList,
+      children: pickerItems,
     );
+  }
+
+  void getData() async {
+    var rate = await coinData.getCoinData();
+    int intRate = rate.toInt();
+    setState(() {
+      interpretationRate = '1BTC = $intRate USD';
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
   }
 
   @override
@@ -76,7 +85,49 @@ class _PriceScreenState extends State<PriceScreen> {
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
                 child: Text(
-                  '1 BTC = ? USD',
+                  interpretationRate,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(18.0, 18.0, 18.0, 0),
+            child: Card(
+              color: Colors.lightBlueAccent,
+              elevation: 5.0,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
+                child: Text(
+                  interpretationRate,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(18.0, 18.0, 18.0, 0),
+            child: Card(
+              color: Colors.lightBlueAccent,
+              elevation: 5.0,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
+                child: Text(
+                  interpretationRate,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 20.0,
@@ -91,7 +142,7 @@ class _PriceScreenState extends State<PriceScreen> {
             alignment: Alignment.center,
             padding: EdgeInsets.only(bottom: 30.0),
             color: Colors.lightBlue,
-            child: Platform.isIOS ? getIOSPicker() : androidDropdown(),
+            child: Platform.isIOS ? iOSPicker() : androidDropdown(),
           ),
         ],
       ),
