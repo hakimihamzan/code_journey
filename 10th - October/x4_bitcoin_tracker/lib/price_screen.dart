@@ -9,8 +9,8 @@ class PriceScreen extends StatefulWidget {
 }
 
 class _PriceScreenState extends State<PriceScreen> {
-  //TODO 6: Update the default currency to AUD, the first item in the currencyList.
   String selectedCurrency = 'AUD';
+  String cryptoCurrency = 'BTC';
 
   DropdownButton<String> androidDropdown() {
     List<DropdownMenuItem<String>> dropdownItems = [];
@@ -27,7 +27,6 @@ class _PriceScreenState extends State<PriceScreen> {
       items: dropdownItems,
       onChanged: (value) {
         setState(() {
-          //TODO 2: Call getData() when the picker/dropdown changes.
           selectedCurrency = value;
           getData();
         });
@@ -38,7 +37,10 @@ class _PriceScreenState extends State<PriceScreen> {
   CupertinoPicker iOSPicker() {
     List<Text> pickerItems = [];
     for (String currency in currenciesList) {
-      pickerItems.add(Text(currency));
+      pickerItems.add(Text(
+        currency,
+        style: TextStyle(color: Colors.white),
+      ));
     }
 
     return CupertinoPicker(
@@ -46,9 +48,7 @@ class _PriceScreenState extends State<PriceScreen> {
       itemExtent: 32.0,
       onSelectedItemChanged: (selectedIndex) {
         print(selectedIndex);
-        //TODO 1: Save the selected currency to the property selectedCurrency
         selectedCurrency = currenciesList[selectedIndex];
-        //TODO 2: Call getData() when the picker/dropdown changes.
         getData();
       },
       children: pickerItems,
@@ -56,12 +56,18 @@ class _PriceScreenState extends State<PriceScreen> {
   }
 
   String bitcoinValue = '?';
+  String ethereumValue = '?';
+  String litecoinValue = '?';
 
   void getData() async {
     try {
-      double data = await CoinData().getCoinData(selectedCurrency);
+      var data = await CoinData().getCoinData(selectedCurrency);
+      print(data);
+      //data is now map
       setState(() {
-        bitcoinValue = data.toStringAsFixed(0);
+        bitcoinValue = data['BTC'].toString();
+        ethereumValue = data['ETH'].toString();
+        litecoinValue = data['LTC'].toString();
       });
     } catch (e) {
       print(e);
@@ -84,36 +90,64 @@ class _PriceScreenState extends State<PriceScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Padding(
-            padding: EdgeInsets.fromLTRB(18.0, 18.0, 18.0, 0),
-            child: Card(
-              color: Colors.lightBlueAccent,
-              elevation: 5.0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
-                child: Text(
-                  //TODO 5: Update the currency name depending on the selectedCurrency.
-                  '1 BTC = $bitcoinValue $selectedCurrency',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              CryptoCard(
+                  bitcoinValue: bitcoinValue,
+                  cryptoCurrency: 'BTC',
+                  selectedCurrency: selectedCurrency),
+              CryptoCard(
+                  bitcoinValue: ethereumValue,
+                  cryptoCurrency: 'ETH',
+                  selectedCurrency: selectedCurrency),
+              CryptoCard(
+                  bitcoinValue: litecoinValue,
+                  cryptoCurrency: 'LTC',
+                  selectedCurrency: selectedCurrency),
+            ],
           ),
           Container(
             height: 150.0,
             alignment: Alignment.center,
             padding: EdgeInsets.only(bottom: 30.0),
             color: Colors.lightBlue,
-            child: Platform.isIOS ? iOSPicker() : androidDropdown(),
+            child: Platform.isAndroid ? iOSPicker() : androidDropdown(),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class CryptoCard extends StatelessWidget {
+  CryptoCard({this.bitcoinValue, this.selectedCurrency, this.cryptoCurrency});
+
+  final String bitcoinValue;
+  final String selectedCurrency;
+  final String cryptoCurrency;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.fromLTRB(18.0, 18.0, 18.0, 0),
+      child: Card(
+        color: Colors.lightBlueAccent,
+        elevation: 5.0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
+          child: Text(
+            '1 $cryptoCurrency = $bitcoinValue $selectedCurrency',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 20.0,
+              color: Colors.white,
+            ),
+          ),
+        ),
       ),
     );
   }
