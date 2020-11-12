@@ -1,3 +1,4 @@
+import 'package:flashchattoo/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flashchattoo/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart' as auth;
@@ -24,7 +25,6 @@ class _ChatScreenState extends State<ChatScreen> {
       final user = _auth.currentUser;
       if (user != null) {
         loggedInUser = user;
-        print(loggedInUser.email);
       }
     } catch (e) {
       print(e);
@@ -41,6 +41,8 @@ class _ChatScreenState extends State<ChatScreen> {
               icon: Icon(Icons.close),
               onPressed: () {
                 //Implement logout functionality
+                _auth.signOut();
+                Navigator.pop(context);
               }),
         ],
         title: Text('⚡️Chat'),
