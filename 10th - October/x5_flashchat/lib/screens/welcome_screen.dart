@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flashchattoo/components/rounded_button.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class WelcomeScreen extends StatefulWidget {
   static const String id = 'welcome_screen';
@@ -29,6 +30,11 @@ class _WelcomeScreenState extends State<WelcomeScreen>
         .animate(controller);
     controller.forward();
     controller.addListener(() {
+      setState(() {});
+    });
+
+    Firebase.initializeApp().whenComplete(() {
+      print("completed");
       setState(() {});
     });
   }
