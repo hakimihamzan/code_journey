@@ -99,3 +99,5 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     );
   }
 }
+
+// app completed

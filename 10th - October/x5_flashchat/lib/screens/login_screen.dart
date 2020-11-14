@@ -48,7 +48,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.black),
                 onChanged: (value) {
-                  //Do something with the user input.
                   email = value;
                 },
                 decoration:
@@ -62,7 +61,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.black),
                 onChanged: (value) {
-                  //Do something with the user input.
                   password = value;
                 },
                 decoration: kTextFieldDecoration.copyWith(
