@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => TaskData(),
+      create: (context) => TaskData(),
       child: MaterialApp(
         home: TasksScreen(),
       ),
