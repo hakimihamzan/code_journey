@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="409dp"
+        android:layout_height="match_parent"
+        app:columnCount="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:rowCount="4">
+
+        <Button
+            android:id="@+id/speakEnglish"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:freezesText="false"
+            android:onClick="playSound"
+            android:tag="doyouspeakenglish"
+            android:text="Do YOU SPEAK ENGLISH "
+            app:backgroundTint="@color/teal_700"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="1"
+            tools:layout_conversion_absoluteHeight="183dp"
+            tools:layout_conversion_absoluteWidth="242dp"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <Button
+            android:id="@+id/goodEvening"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:freezesText="false"
+            android:onClick="playSound"
+            android:tag="goodevening"
+            android:text="good evening"
+            app:backgroundTint="@color/teal_700"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="1"
+            tools:layout_conversion_absoluteHeight="183dp"
+            tools:layout_conversion_absoluteWidth="242dp"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <Button
+            android:id="@+id/hello"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:freezesText="false"
+            android:onClick="playSound"
+            android:tag="hello"
+            android:text="hello"
+            app:backgroundTint="@color/teal_700"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="1"
+            tools:layout_conversion_absoluteHeight="183dp"
+            tools:layout_conversion_absoluteWidth="242dp"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <Button
+            android:id="@+id/howAreYou"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:freezesText="false"
+            android:onClick="playSound"
+            android:tag="howareyou"
+            android:text="how are you?"
+            app:backgroundTint="@color/teal_700"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="1"
+            tools:layout_conversion_absoluteHeight="183dp"
+            tools:layout_conversion_absoluteWidth="242dp"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <Button
+            android:id="@+id/liveIN"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:freezesText="false"
+            android:onClick="playSound"
+            android:tag="ilivein"
+            android:text="i live in .."
+            app:backgroundTint="@color/teal_700"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="1"
+            tools:layout_conversion_absoluteHeight="183dp"
+            tools:layout_conversion_absoluteWidth="242dp"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <Button
+            android:id="@+id/myNameIs"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:freezesText="false"
+            android:onClick="playSound"
+            android:tag="mynameis"
+            android:text="my name is .."
+            app:backgroundTint="@color/teal_700"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="1"
+            tools:layout_conversion_absoluteHeight="183dp"
+            tools:layout_conversion_absoluteWidth="242dp"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <Button
+            android:id="@+id/please"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:freezesText="false"
+            android:onClick="playSound"
+            android:tag="please"
+            android:text="please"
+            app:backgroundTint="@color/teal_700"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="1"
+            tools:layout_conversion_absoluteHeight="183dp"
+            tools:layout_conversion_absoluteWidth="242dp"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <Button
+            android:id="@+id/welcome"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:freezesText="false"
+            android:onClick="playSound"
+            android:tag="welcome"
+            android:text="welcome"
+            app:backgroundTint="@color/teal_700"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="1"
+            tools:layout_conversion_absoluteHeight="183dp"
+            tools:layout_conversion_absoluteWidth="242dp"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+
+
+
+
+
+    </androidx.gridlayout.widget.GridLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
