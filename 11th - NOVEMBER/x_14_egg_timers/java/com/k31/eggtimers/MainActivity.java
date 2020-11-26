@@ -2,7 +2,9 @@ package com.k31.eggtimers;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -11,41 +13,79 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    int startingTime = 10;
+    TextView timerTextView;
+    SeekBar timerSeekBar;
+    boolean counterIsActive = false;
+    Button goButton;
+    CountDownTimer countDownTimer;
 
-    boolean go;
+    public void resetTimer() {
+        timerTextView.setText("0.30");
+        timerSeekBar.setProgress(30);
+        timerSeekBar.setEnabled(true);
+        countDownTimer.cancel();
+        goButton.setText("GO!");
+        counterIsActive = false;
+    }
 
-    public void goStopTime(View view){
-        Button buttonName = (Button) findViewById(R.id.goStopButton);
+    public void buttonClicked(View view){
 
-        if (go) {
-            buttonName.setText("GO");
-            go = false;
+        if (counterIsActive) {
+            resetTimer();
+
         } else {
 
-            buttonName.setText("STOP");
-            go = true;
+            counterIsActive = true;
+            timerSeekBar.setEnabled(false);
+            goButton.setText("STOP");
+
+            countDownTimer = new CountDownTimer(timerSeekBar.getProgress() * 1000 + 100, 1000) {
+
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    updateTimer((int) millisUntilFinished / 1000);
+
+                }
+
+                @Override
+                public void onFinish() {
+
+                    MediaPlayer mediaPlayer = new MediaPlayer().create(getApplicationContext(), R.raw.airhorn);
+                    mediaPlayer.start();
+                    resetTimer();
+                }
+            }.start();
         }
     }
+
+    public void updateTimer(int secondsLeft) {
+        int minutes = secondsLeft/60;
+        int seconds = secondsLeft - (minutes * 60);
+
+        String secondString = Integer.toString(seconds);
+        if (seconds <= 9) {
+            secondString = "0" + secondString;
+        }
+
+        timerTextView.setText(Integer.toString(minutes) + ":" + secondString);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // seekbar thing
-        SeekBar timerSeekerBar = findViewById(R.id.timerSeekBar);
-        TextView textView = (TextView) findViewById(R.id.editTextTime);
-        textView.setText(String.valueOf(startingTime));
+        timerSeekBar = findViewById(R.id.timerSeekBar);
+        timerTextView = findViewById(R.id.countdownTextView);
+        goButton = findViewById(R.id.goButton);
 
-
-        timerSeekerBar.setProgress(startingTime);
-        timerSeekerBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        timerSeekBar.setMax(600);
+        timerSeekBar.setProgress(30);
+        timerSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                Log.i("numbers in bar", String.valueOf(progress));
-
-                textView.setText(String.valueOf(progress));
+                updateTimer(progress);
             }
 
             @Override
@@ -58,7 +98,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
 
 
     }

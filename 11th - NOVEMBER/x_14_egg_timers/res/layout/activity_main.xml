@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/eggImageView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="13dp"
@@ -28,7 +28,7 @@
             app:srcCompat="@drawable/egg" />
 
         <Button
-            android:id="@+id/goStopButton"
+            android:id="@+id/goButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -40,8 +40,8 @@
             android:layout_marginTop="398dp"
             android:layout_marginEnd="160dp"
             android:layout_marginRight="160dp"
-            android:onClick="goStopTime"
-            android:text="stop" />
+            android:onClick="buttonClicked"
+            android:text="go" />
 
         <SeekBar
             android:id="@+id/timerSeekBar"
@@ -58,7 +58,7 @@
             android:layout_marginRight="16dp" />
 
         <TextView
-            android:id="@+id/editTextTime"
+            android:id="@+id/countdownTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -72,7 +72,7 @@
             android:ems="40"
             android:gravity="center"
             android:inputType="time"
-            android:text="99:999"
+            android:text="0:30"
             android:textSize="40dp" />
 
     </RelativeLayout>
