@@ -2,18 +2,22 @@ package com.k31.guessthecelebrity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -21,6 +25,16 @@ public class MainActivity extends AppCompatActivity {
     boolean correct = true;
     ArrayList<String> name = new ArrayList<String>();
     ArrayList<String> imageUrl = new ArrayList<String>();
+    Random random = new Random();
+    ImageView imageView;
+    Button button0;
+    Button button1;
+    Button button2;
+    Button button3;
+    int a;
+    ArrayList<String> answers = new ArrayList<String>();
+    String trueAnswer = "";
+
 
     public class DownloadTask extends AsyncTask<String, Void, String> {
 
@@ -64,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
 
-                for (int i = 0; i<name.size(); i++) {
+                for (int i = 0; i < name.size(); i++) {
                     Log.i("Name is--------", name.get(i));
                     Log.i("Image URL is--------", imageUrl.get(i));
                 }
@@ -81,21 +95,53 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public class DownloadImage extends AsyncTask<String, Void, Bitmap> {
+
+        @Override
+        protected Bitmap doInBackground(String... strings) {
+            try {
+                URL url = new URL(strings[0]);
+
+
+                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+
+                urlConnection.connect();
+
+                InputStream in = urlConnection.getInputStream();
+
+                Bitmap myBitmap = BitmapFactory.decodeStream(in);
+
+                return myBitmap;
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+    }
+
 
     public void chooseCeleb(View view) {
-        Log.i("tapped", "here");
 
-        if (correct) {
-            Toast.makeText(getApplicationContext(), "Correct", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(getApplicationContext(), "Wrong :((", Toast.LENGTH_SHORT).show();
-        }
+        //check if right or wrong then call again getBitmap
+
+
+
+        a = random.nextInt(name.size());
+        getBitmap(imageView, a);
+
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        imageView = findViewById(R.id.imageView4);
+        button0 = (Button) findViewById(R.id.button0);
+        button1 = (Button) findViewById(R.id.button1);
+        button2 = (Button) findViewById(R.id.button2);
+        button3 = (Button) findViewById(R.id.button3);
 
         DownloadTask task = new DownloadTask();
         String result = null;
@@ -106,8 +152,50 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        Log.i("Result is------------", result);
+        a = random.nextInt(name.size());
+
+
+        getBitmap(imageView, a);
     }
+
+    public void getBitmap(ImageView imageView, int a) {
+        DownloadImage downloadImage = new DownloadImage();
+        Bitmap image = null;
+
+        try {
+            image = downloadImage.execute(imageUrl.get(a)).get();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        imageView.setImageBitmap(image);
+
+        int locationCorrect = random.nextInt(4);
+
+        answers.clear();
+
+        for (int i = 0; i < 4; i++) {
+            if (i == locationCorrect) {
+                answers.add(name.get(a));
+                trueAnswer = name.get(a);
+            } else {
+                int wrongAnswer = random.nextInt(name.size());
+                while (name.get(wrongAnswer) == name.get(a)) {
+                    wrongAnswer = random.nextInt(name.size());
+                }
+                answers.add(name.get(wrongAnswer));
+
+            }
+        }
+
+        button0.setText(answers.get(0));
+        button1.setText(answers.get(1));
+        button2.setText(answers.get(2));
+        button3.setText(answers.get(3));
+
+
+    }
+
 }
 
 
