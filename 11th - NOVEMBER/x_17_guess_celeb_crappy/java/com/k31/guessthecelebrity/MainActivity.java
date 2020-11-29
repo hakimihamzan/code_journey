@@ -34,9 +34,12 @@ public class MainActivity extends AppCompatActivity {
     int a;
     ArrayList<String> answers = new ArrayList<String>();
     String trueAnswer = "";
+    ArrayList<String> tempForNameandUrl = new ArrayList<String>();
+
 
 
     public class DownloadTask extends AsyncTask<String, Void, String> {
+
 
 
         @Override
@@ -127,10 +130,32 @@ public class MainActivity extends AppCompatActivity {
         //check if right or wrong then call again getBitmap
 
 
+        checkAnswer(view);
+
 
         a = random.nextInt(name.size());
         getBitmap(imageView, a);
 
+
+
+
+
+
+
+    }
+
+    private void checkAnswer(View view) {
+        if (name.get(a) == view.getTag()) {
+            Log.i("xxxxxxxxxxxxxxxxxxxx", "xxxxxxxxxxxxx");
+            Toast.makeText(getApplicationContext(), "Correct!", Toast.LENGTH_SHORT).show();
+        }
+
+        if (name.get(a) != view.getTag()) {
+            Log.i("wrong", "wrong-------------");
+            Toast.makeText(getApplicationContext(), "Wrong :((", Toast.LENGTH_SHORT).show();
+
+
+        }
     }
 
     @Override
@@ -156,6 +181,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         getBitmap(imageView, a);
+        trueAnswer = name.get(a);
     }
 
     public void getBitmap(ImageView imageView, int a) {
@@ -168,6 +194,9 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        tempForNameandUrl.add(imageUrl.get(a));
+        tempForNameandUrl.add(name.get(a));
+
         imageView.setImageBitmap(image);
 
         int locationCorrect = random.nextInt(4);
@@ -177,11 +206,12 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < 4; i++) {
             if (i == locationCorrect) {
                 answers.add(name.get(a));
-                trueAnswer = name.get(a);
+
             } else {
                 int wrongAnswer = random.nextInt(name.size());
+
                 while (name.get(wrongAnswer) == name.get(a)) {
-                    wrongAnswer = random.nextInt(name.size());
+
                 }
                 answers.add(name.get(wrongAnswer));
 
@@ -189,9 +219,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         button0.setText(answers.get(0));
+        button0.setTag(answers.get(0));
         button1.setText(answers.get(1));
+        button1.setTag(answers.get(1));
         button2.setText(answers.get(2));
+        button2.setTag(answers.get(2));
         button3.setText(answers.get(3));
+        button3.setTag(answers.get(3));
 
 
     }
