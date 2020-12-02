@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="160sp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="16sp"
+    android:gravity="bottom"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark"
+    android:background="@drawable/header">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="60sp"
+        android:layout_height="60sp"
+        android:contentDescription="@string/kimi_s_picture"
+        android:scaleType="centerCrop"
+        android:src="@drawable/pictue" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/kimi"
+        android:paddingTop="8sp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/kimi_gmail_com"
+        android:paddingTop="4sp"/>
+
+
+
+
+
+</LinearLayout>
