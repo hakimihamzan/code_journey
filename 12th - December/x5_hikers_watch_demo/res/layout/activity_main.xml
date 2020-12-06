@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/pic" />
+
+    <TextView
+        android:id="@+id/altTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:alpha="0.8"
+        android:background="#171616"
+        android:paddingStart="5sp"
+        android:paddingEnd="5sp"
+        android:text="Altitude: 400.04034"
+        android:textColor="#DAD1D1"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/accuTextView" />
+
+    <TextView
+        android:id="@+id/addressTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:alpha="0.8"
+        android:background="#171616"
+        android:paddingStart="5sp"
+        android:paddingEnd="5sp"
+        android:text="Address: \n40th Boulevard Street \nNew York, Kansas"
+        android:textColor="#DAD1D1"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/altTextView" />
+
+    <TextView
+        android:id="@+id/accuTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:alpha="0.8"
+        android:background="#171616"
+        android:paddingStart="5sp"
+        android:paddingEnd="5sp"
+        android:text="Accuracy: 400.04034"
+        android:textColor="#DAD1D1"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/longTextView" />
+
+    <TextView
+        android:id="@+id/longTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:alpha="0.8"
+        android:background="#171616"
+        android:paddingStart="5sp"
+        android:paddingEnd="5sp"
+        android:text="Longitude: 400.04034"
+        android:textColor="#DAD1D1"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/latTextView" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Hiker's Watch"
+        android:textColor="#DAD1D1"
+        android:textSize="46sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/latTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="46dp"
+        android:alpha="0.8"
+        android:background="#171616"
+        android:paddingStart="5sp"
+        android:text="Latitude: 400.04034"
+        android:textColor="#DAD1D1"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        android:paddingEnd="5sp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
