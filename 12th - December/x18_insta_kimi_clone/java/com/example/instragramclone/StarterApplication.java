@@ -3,12 +3,17 @@ package com.example.instragramclone;
 import android.app.Application;
 import android.util.Log;
 
+import com.parse.FindCallback;
+import com.parse.GetCallback;
 import com.parse.Parse;
 import com.parse.ParseACL;
 import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+
+import java.util.List;
 
 public class StarterApplication extends Application
 {
@@ -30,8 +35,6 @@ public class StarterApplication extends Application
                                  .server("http://3.22.183.8/parse/") // Add Your Server IP. Do not add "PORT Number" such as ip:80 or ip:1337
                                  .build()
         );
-
-
 
 
         //ParseUser.enableAutomaticUser();
