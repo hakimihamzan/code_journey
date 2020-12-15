@@ -1,0 +1,23 @@
+<h1>{{ question.question_text }}</h1>
+<ul>
+{% for choice in question.choice_set.all %}
+    <li>{{ choice.choice_text }}</li>
+{% endfor %}
+</ul>
+
+
+{% if student %}
+    <ul>
+    {% for student in student %}
+        <li>{{ student.name }}</li>
+        <li>{{ student.matrix_number }}</li>
+        <li>{{ student.program_course }}</li>
+        <li>{{ student.class_attended }}</li>
+        <li>{{ student.class_lecturer }}</li>
+        <br>
+
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
