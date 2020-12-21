@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
                 Toast.makeText(MainActivity.this, "Camera permission is required", Toast.LENGTH_SHORT).show();
+                //Log.i("message","error")
             }
 
             @Override
