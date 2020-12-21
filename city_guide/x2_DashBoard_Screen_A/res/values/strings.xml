@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">City Guide</string>
+    <string name="logo_name">Get A Way</string>
+    <string name="slogan_name">We will help you find your way</string>
+    <string name="powered_by">Powered by Kimi</string>
+<!--button-->
+    <string name="let_s_get_started">Let\'s Get Started</string>
+<!--title-->
+    <string name="first_slide_title">Search</string>
+    <string name="second_slide_title">Make A Call</string>
+    <string name="third_slide_title">Add Missing Place</string>
+    <string name="fourth_slide_title">Sit Back and Enjoy</string>
+
+    <string name="first_slide_desc">You can search any place with this app</string>
+    <string name="second_slide_desc">Make calls with endless credit at your disposal</string>
+    <string name="third_slide_desc">Add any place to the bookmark, even your favorite bathroom</string>
+    <string name="fourth_slide_desc">Chill get some sun grow old die biatch!</string>
+    <string name="skip_btn">Skip</string>
+    <string name="search_text">Search</string>
+    <string name="restaurants">Restaurants</string>
+    <string name="hotels">Hotels</string>
+    <string name="airports">Airports</string>
+    <string name="shops">Shops</string>
+    <string name="educations">Educations</string>
+    <string name="all_featured_locations">All Featured Locations</string>
+    <string name="featured_loc_desc">All the locations that are featured and have the top demand in town!</string>
+    <string name="most_viewed">Most Viewed</string>
+    <string name="view_all">View All</string>
+    <string name="categories">categories</string>
+
+</resources>
